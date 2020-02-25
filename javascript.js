@@ -107,3 +107,12 @@ function displayIsInClientInfo() {
         document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
 }
+
+function registerButtonHandlers() {
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        liff.openWindow({
+            url: 'https://scychu.github.io/CODINGTEAM/', // Isi dengan Endpoint URL aplikasi web Anda
+            external: true
+        });
+    });
+}
