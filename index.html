@@ -1,30 +1,50 @@
 <html>
-<h1>
-    CODING TEAM MEMBER REGISTRATION
-</h1>    
-</html>
-<script src="https://d.line-scdn.net/liff/edge/2.1/sdk.js">
+<head>
+<title>Login and Registration Form Design</title>
+	<link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="javascript.js">
+	<link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway&display=swap" rel="stylesheet">
+</head>	
+<body>
+	<div class="login-page">
+	<div class="form">
+		<form class="register-form">
+			<h3 class="caption"> Join Us Now!</h3>
+		<label for="email" id="email"><b>Email</b></label>
+		<input type="text" placeholder="Enter Email"/ required="">
+		<label for="password"><b>Password</b></label>
+		<input type="text" placeholder="Enter Password"/ required="">
+		<label for="password-repeat"><b>Repeat Password</b></label>
+		<input type="text" placeholder="Repeat Password"/ required="">
+		<p class="note"> By creating an account you agree to our Term & Privacy</p>
+		<button>Create</button>
+		<p class="message">Already Registered?<a href="#"> Login</a>
+		</p>
+	</form>
 
+	<form class="login-form">
+		<h3 class="caption"> Welcome Back!</h3>
+	<input type="text" placeholder="user name"/>
+	<input type="password" placeholder="password"/>
+	<button>login</button>
+		<p class="message">Not Registered?<a href="#"> Register</a>
+		</p>
+		<p class="message" id="forgot-message" href="#">Forgot Password?<a href="#"> Click Here</a>
+		</p>
+	</form>
+	
+</div>
+</div>
+</body>
 
-// Using a Promise object
-liff
-  .init({
-    liffId: "1653861024" // use own liffId
-  })
-  .then(() => {
-    // Start to use liff's api
-  })
-  .catch((err: LiffError) => {
-    // Error happens during initialization
-    console.log(err.code, err.message);
-  });
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 
-  liff.getProfile()
-.then(profile => {
-  const name = profile.displayName
-})
-.catch((err) => {
-  console.log('error', err);
-})
-
+<script>
+	$('.message a').click(function(){
+	$('form').animate({height: "toggle",opacity: "toggle"}, "slow");
+	});
 </script>
+
+</html>	
