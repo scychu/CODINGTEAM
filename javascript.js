@@ -1,10 +1,3 @@
-<script>
-
-	$('.message a').click(function(){
-	$('form').animate({height: "toggle",opacity: "toggle"}, "slow");
-    });
-    
-    </script>
 //LIFF//
 
 // Using a Promise object
@@ -125,3 +118,18 @@ function registerButtonHandlers() {
         });
     });
 }
+
+document.getElementById('sendMessageButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+            'type': 'text',
+            'text': "Terima kasih!!"
+        }]).then(function() {
+            window.alert('Message sent');
+        }).catch(function(error) {
+            window.alert('Error sending message: ' + error);
+        });
+    }
+});
