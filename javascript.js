@@ -1,8 +1,10 @@
+<script>
+
 	$('.message a').click(function(){
 	$('form').animate({height: "toggle",opacity: "toggle"}, "slow");
     });
     
-
+    </script>
 //LIFF//
 
 // Using a Promise object
