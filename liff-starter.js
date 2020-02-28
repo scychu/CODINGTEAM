@@ -1,6 +1,6 @@
 window.onload = function() {
     const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "";   // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "1653861024";   // change the default LIFF value if you are not using a node server
  
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -97,7 +97,7 @@ function displayIsInClientInfo() {
 function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
-            url: 'https://example.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            url: 'https://scychu.github.io/RASA/', // Isi dengan Endpoint URL aplikasi web Anda
             external: true
         });
     });
@@ -122,4 +122,20 @@ function registerButtonHandlers() {
             window.location.reload();
         }
     });
+    
+    document.getElementById('sendMessageButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': "Anda telah menggunakan fitur Send Message!"
+            }]).then(function() {
+                window.alert('Ini adalah pesan dari fitur Send Message');
+            }).catch(function(error) {
+                window.alert('Error sending message: ' + error);
+            });
+        }
+    });
+
 }
