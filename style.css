@@ -15,6 +15,9 @@ h1{
 h2{
 	font-family: "Nanum Gothic";
 }
+p{
+	align-items: center;
+}
 .daftar-menu{
   width: 750px;
   height: 423px;
