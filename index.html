@@ -117,10 +117,10 @@ let priceSate = 0;
 let priceLontong =0;
 const pricesate=document.getElementById("priceSate");
 const pricelontong=document.getElementById("priceLontong");
-var valueOfSate = document.getElementById("quantitySate").value;
-var valueOfLontong=document.getElementById("quantityLontong").value;	
+	
 	function hargaMakanan(){
-		
+		var valueOfSate = document.getElementById("quantitySate").value;
+		var valueOfLontong=document.getElementById("quantityLontong").value;
 		priceSate=valueOfSate*15000;
 		pricesate.innerHTML=priceSate;
 		priceLontong=valueOfLontong*2000;
