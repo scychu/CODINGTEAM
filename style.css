@@ -128,8 +128,34 @@ img{
 	background-color: #E1E8EE;
 	border-radius: 6px;
 	border: none;
-	cursor: pointer;
+	
   }
+
+  #order-summary{
+	  height: auto;
+	  text-align: center;
+  }
+
+#pesan{
+	background-color: #4CAF50;
+  	border: none;
+  	color: white;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+	float: right;
+	margin:100px;
+	padding:15px 32px;
+	}
+#sate, #lontong{
+	margin:10px;
+}
+
+#totalHarga{
+	font-weight: bold;
+}
+
 /*Responsive*/
   @media (max-width: 800px) {
 	.daftar-menu {
@@ -156,3 +182,4 @@ img{
 	  margin-right: 20px;
 	}
   }
+  

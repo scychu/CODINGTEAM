@@ -25,7 +25,6 @@
 				<span>Sate Ayam</span>
 				<span>1 porsi @ 5 tusuk</span>
 				<span>Rp15.000,-</span>
-				<span>Maksimal order 50 porsi</span>
 			</div>
 
 			<div class="quantity">
@@ -68,9 +67,16 @@
 	</div>
 	
 	<div id="order-summary">
-
+		<h2>Order Summary</h2>
+		<div id="sate"></div>
+		<div id="lontong"></div>
+		<div id=totalHarga>A</div>
+		<button type="button" id="pesan">Order Sekarang</button>
 
 	</div>
+
+
+
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -117,17 +123,61 @@ let priceSate = 0;
 let priceLontong =0;
 const pricesate=document.getElementById("priceSate");
 const pricelontong=document.getElementById("priceLontong");
-	
+
+let pesananSate=0;
+let pesananLontong=0;
+const orderansate=document.getElementById("sate");
+const orderanlontong=document.getElementById("lontong");
+
+let totalHarga=0;
+const total_harga = document.getElementById("totalHarga");
+
+const pesan_button= document.getElementById("pesan");
+const order_summary=document.getElementById("order-summary");
+
+pesan_button.style.display="none";
+order_summary.style.display="none";
+total_harga.style.display="none";
+
 	function hargaMakanan(){
 		var valueOfSate = document.getElementById("quantitySate").value;
 		var valueOfLontong=document.getElementById("quantityLontong").value;
 		priceSate=valueOfSate*15000;
-		pricesate.innerHTML=priceSate;
+		pricesate.innerHTML=numberWithCommas(priceSate);
 		priceLontong=valueOfLontong*2000;
-		pricelontong.innerHTML=priceLontong;
+		pricelontong.innerHTML=numberWithCommas(priceLontong);
+		summary(valueOfSate,valueOfLontong);
+
 	}
-
 hargaMakanan();
-	
 
+	function summary(sate,lontong){
+		pesananSate=sate;
+		if(pesananSate>0){
+			orderansate.innerHTML="Orderan Sate " + pesananSate;
+			buttons()
+		} else console.log("Tidak ada orderan sate");
+		pesananLontong=lontong;
+		if(pesananLontong>0){
+			orderanlontong.innerHTML="Orderan Lontong " + pesananLontong;
+			buttons()
+		} else console.log("Tidak ada orderan lontong");
+	}
+	
+	function buttons(){
+		
+		
+		pesan_button.style.display="block";
+		order_summary.style.display="block";
+		totalHarga=priceSate+priceLontong;
+		total_harga.innerHTML="Jumlah yang harus dibayar senilai Rp "+ numberWithCommas(totalHarga);
+		total_harga.style.display="block";
+	}
+	pesan_button.addEventListener("click",function(){
+		console.log("pesanan diterima");
+	})
+	function numberWithCommas(x) {
+    		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+	
 </script>
