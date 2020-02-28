@@ -130,8 +130,19 @@ img{
 	border: none;
 	
   }
-
-  #order-summary{
+#quantitySate{
+	-webkit-appearance: none;
+	border: none;
+	text-align: center;
+	width: 32px;
+	font-size: 16px;
+	color: #43484D;
+	font-weight: 300;
+	height:30px;
+	margin:10px;
+	border-radius: 5px;
+}
+#order-summary{
 	  height: auto;
 	  text-align: center;
   }
