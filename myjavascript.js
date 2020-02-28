@@ -1,4 +1,3 @@
-
 $('.minus-btn').on('click', function(e) {
     e.preventDefault();
     var $this = $(this);
@@ -77,9 +76,7 @@ hargaMakanan();
 		} else console.log("Tidak ada orderan lontong");
 	}
 	
-	function buttons(){
-		
-		
+	function buttons(){		
 		pesan_button.style.display="block";
 		order_summary.style.display="block";
 		totalHarga=priceSate+priceLontong;
