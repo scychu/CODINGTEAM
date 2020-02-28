@@ -10,7 +10,7 @@ html,body{
 	text-align: center;
 }
 h1{
-	font-family: "Raleway";
+	font-family: "Raleway", sans-serif; /*Manjari, Nanum Gothic*/
 }
 h2{
 	font-family: "Nanum Gothic";
@@ -115,13 +115,6 @@ img{
 	border-radius: 5px;
   }
    
-  .price {
-    width: 83px;
-    font-size: 20px;
-    text-align: center; 
-    color: #43484D;
-    font-weight: 300;
-  }
   button[class*=btn] {
 	width: 30px;
 	height: 30px;

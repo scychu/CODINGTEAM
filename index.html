@@ -1,50 +1,133 @@
 <html>
-<head>
-<title>Login and Registration Form of CODING TEAM</title>
-	<link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="javascript.js">
-	<link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway&display=swap" rel="stylesheet">
-</head>	
-<body>
-	<div class="login-page">
-	<div class="form">
-		<form class="register-form">
-			<h3 class="caption"> Join Us Now!</h3>
-		<label for="email" id="email"><b>Email</b></label>
-		<input type="text" placeholder="Enter Email"/ required="">
-		<label for="password"><b>Password</b></label>
-		<input type="text" placeholder="Enter Password"/ required="">
-		<label for="password-repeat"><b>Repeat Password</b></label>
-		<input type="text" placeholder="Repeat Password"/ required="">
-		<p class="note"> By creating an account you agree to our Term & Privacy</p>
-		<button>Create</button>
-		<p class="message">Already Registered?<a href="#"> Login</a>
-		</p>
-	</form>
 
-	<form class="login-form">
-		<h3 class="caption"> Welcome Back!</h3>
-	<input type="text" placeholder="user name"/>
-	<input type="password" placeholder="password"/>
-	<button>login</button>
-		<p class="message">Not Registered?<a href="#"> Register</a>
-		</p>
-		<p class="message" id="forgot-message" href="#">Forgot Password?<a href="#"> Click Here</a>
-		</p>
-	</form>
+<head>
+	<title>RAJANYA SATE AYAM</title>
+		<link rel="stylesheet" href="style.css">
+		<link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Raleway&display=swap" rel="stylesheet">
+</head>	
+
+<body>
+	<h1>RAJANYA SATE AYAM</h1>
+	<h2>"Siap menerima orderan"</h2>
+
+	<div id="daftar-menu">
+		<div class="title">
+		Daftar Menu
+		</div>
+		<!--Menu #1-->
+		<div class="item">
+			<div class="image">
+				<img src="sate.jpg" alt="sate"/>
+			</div>
+
+			<div class="description">
+				<span>Sate Ayam</span>
+				<span>1 porsi @ 5 tusuk</span>
+				<span>Rp15.000,-</span>
+				<span>Maksimal order 50 porsi</span>
+			</div>
+
+			<div class="quantity">
+				<button class="minus-btn" type="button" name="button" id="minus">
+					<img src="minus.png" alt=""/>
+				</button>
+				<input type="text" name="name" value="0" id="quantitySate">
+				<button class="plus-btn" type="button" name="button" id="plus">
+					<img src="plus.png" alt=""/>
+				</button>
+			</div>
+
+			<div class="price" id="priceSate">0</div>
+
+		</div>
+
+		<!--Menu #2-->
+		<div class="item">
+			<div class="image">
+				<img src="lontong.jpg" alt="lontong"/>
+			</div>
+
+			<div class="description">
+				<span>Lontong</span>
+				<span>Rp2.000,-</span>
+			</div>
+
+			<div class="quantity">
+				<button class="minus-btn" type="button" name="button" id="minus">
+					<img src="minus.png" alt=""/>
+				</button>
+				<input type="text" name="name" value="0" id="quantityLontong">
+				<button class="plus-btn" type="button" name="button" id="plus">
+					<img src="plus.png" alt=""/>
+				</button>
+			</div>
+
+			<div class="price" id="priceLontong">0</div>
+		</div>
+	</div>
 	
-</div>
-</div>
+	<div id="order-summary">
+
+
+	</div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-<script>
-	$('.message a').click(function(){
-	$('form').animate({height: "toggle",opacity: "toggle"}, "slow");
-    });
-    
-    </script>
 
 </html>	
+
+<script>
+
+$('.minus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value > 1) {
+        value = value - 1;
+    } else {
+        value = 0;
+    }
+ 
+  $input.val(value);
+  hargaMakanan();
+});
+ 
+$('.plus-btn').on('click', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $input = $this.closest('div').find('input');
+    var value = parseInt($input.val());
+ 
+    if (value < 50) {
+        value = value + 1;
+    } else {
+        value =50;
+    }
+ 
+	$input.val(value);
+	hargaMakanan();
+});
+
+
+let priceSate = 0;
+let priceLontong =0;
+const pricesate=document.getElementById("priceSate");
+const pricelontong=document.getElementById("priceLontong");
+var valueOfSate = document.getElementById("quantitySate").value;
+var valueOfLontong=document.getElementById("quantityLontong").value;	
+	function hargaMakanan(){
+		
+		priceSate=valueOfSate*15000;
+		pricesate.innerHTML=priceSate;
+		priceLontong=valueOfLontong*2000;
+		pricelontong.innerHTML=priceLontong;
+	}
+
+hargaMakanan();
+	
+
+</script>
