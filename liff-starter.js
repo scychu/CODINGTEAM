@@ -1,6 +1,6 @@
 window.onload = function() {
     const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1653861024";   // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "line://app/1653861024-aVrOWGE8";   // change the default LIFF value if you are not using a node server
  
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -98,44 +98,59 @@ function registerButtonHandlers() {
     document.getElementById('openWindowButton').addEventListener('click', function() {
         liff.openWindow({
             url: 'https://scychu.github.io/RASA/', // Isi dengan Endpoint URL aplikasi web Anda
-            external: true
+            external: false
         });
     });
- 
-    document.getElementById('closeWindowButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.closeWindow();
-        }
-    });
- 
-    document.getElementById('liffLoginButton').addEventListener('click', function() {
-        if (!liff.isLoggedIn()) {
-            liff.login();
-        }
-    });
- 
-    document.getElementById('liffLogoutButton').addEventListener('click', function() {
-        if (liff.isLoggedIn()) {
-            liff.logout();
-            window.location.reload();
-        }
-    });
-    
-    document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': "Anda telah menggunakan fitur Send Message!"
-            }]).then(function() {
-                window.alert('Ini adalah pesan dari fitur Send Message');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
-    });
-
 }
+function sendAlertIfNotInClient() {
+        alert('This button is unavailable as LIFF is currently being opened in an external browser.');
+}
+
+/**
+* Toggle specified element
+* @param {string} elementId The ID of the selected element
+*/
+function toggleElement(elementId) {
+    const elem = document.getElementById(elementId);
+    if (elem.offsetWidth > 0 && elem.offsetHeight > 0) {
+        elem.style.display = 'none';
+    } else {
+        elem.style.display = 'block';
+    }
+}
+
+document.getElementById('closeWindowButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+        } else {
+        liff.closeWindow();
+        }
+});
+ 
+document.getElementById('liffLoginButton').addEventListener('click', function() {
+    if (!liff.isLoggedIn()) {
+        liff.login();
+    }
+});
+ 
+document.getElementById('liffLogoutButton').addEventListener('click', function() {
+    if (liff.isLoggedIn()) {
+        liff.logout();
+        window.location.reload();
+    }
+});
+    
+document.getElementById('sendMessageButton').addEventListener('click', function() {
+    if (!liff.isInClient()) {
+        sendAlertIfNotInClient();
+    } else {
+        liff.sendMessages([{
+           'type': 'text',
+            'text': "Anda telah menggunakan fitur Send Message!"
+        }]).then(function() {
+        window.alert('Ini adalah pesan dari fitur Send Message');
+        }).catch(function(error) {
+        window.alert('Error sending message: ' + error);
+        });
+    }
+});
